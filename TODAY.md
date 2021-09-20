@@ -1,0 +1,8 @@
+- env variable
+- move to config
+- goto bin/www
+- goto database
+- passport
+- initialize in app
+- add middleware
+- add route
