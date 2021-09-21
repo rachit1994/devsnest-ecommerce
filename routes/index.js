@@ -11,6 +11,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', function(req, res) {
   res.render('index', { title: JSON.stringify(req.session.user) })
+});
+
+router.get('/add-db', function(req, res) {
+  require('../utils/init');
 })
 
 /**

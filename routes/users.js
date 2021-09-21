@@ -10,7 +10,7 @@ const pool = new Pool({
   port: 5432,
 })
 const getUsers = (request, response) => {
-  pool.query('SELECT * FROM "Users"', (error, results) => {
+  pool.query('SELECT * FROM "Users" where id=$1 and email=$2', [request.query.id, request.query.email], (error, results) => {
     if (error) {
       throw error
     }
