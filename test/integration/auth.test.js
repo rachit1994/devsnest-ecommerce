@@ -1,10 +1,10 @@
-const setupTestDB = require("../utils/setupTestDB");
+const {testSequalizeDb} = require("../utils/setupTestDB");
 const faker = require("faker");
 const request = require('supertest');
 const app = require("../../app");
 const { expect } = require('chai')
 
-// setupTestDB();
+testSequalizeDb();
 describe("Auth routes", () => {
   describe("POST /register", () => {
     let newUser;

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 var mongoDB = "mongodb://127.0.0.1/my_database";
 var options = { useNewUrlParser: true, useUnifiedTopology: true };
-var sequalize = require("../../database");
+var sequelize = require("../../database");
 
 const setupTestDB = () => {
   beforeAll(async () => {
@@ -21,4 +21,17 @@ const setupTestDB = () => {
   });
 };
 
-module.exports = setupTestDB;
+var testSequalizeDb = () => {
+  beforeAll((done) => {
+    sequelize
+      .authenticate()
+      .then(() => done())
+      .catch((err) => done(err));
+  });
+  afterAll((done) => {
+      sequelize.close()
+      .then(() => done())
+      .catch((err) => done(err));
+  })
+};
+module.exports = { setupTestDB, testSequalizeDb };
