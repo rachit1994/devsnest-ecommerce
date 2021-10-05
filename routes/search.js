@@ -51,7 +51,7 @@ router.get("/trgm", (req, res) => {
             where: [
               sequelize.where(
                 sequelize.fn("similarity", sequelize.col("Name"), req.query.q),
-                { [Op.gt]: 0.2 }
+                { [Op.gt]: 0.5 }
               ),
               // more where logics can be added here
               {},
