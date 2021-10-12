@@ -7,6 +7,8 @@ require("./database/mongo");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require("passport");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const { redisClient, RedisStore, session } = require("./database/redis");
 
@@ -15,6 +17,12 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+// Extended: https://swagger.io/specification/#infoObject
+const swaggerOptions = require("./swagger.json");
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(logger('dev'));
 app.use(express.json());

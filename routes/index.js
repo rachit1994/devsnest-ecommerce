@@ -16,6 +16,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/**
+ * @swagger
+ * /test:
+ *  get:
+ *    description: Use to request all customers
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 router.get('/test', function(req, res) {
   res.render('index', { title: JSON.stringify(req.session.user) })
 });
@@ -24,6 +33,15 @@ router.get('/add-db', function(req, res) {
   require('../utils/init');
 })
 
+/**
+ * @swagger
+ * /csv:
+ *  put:
+ *    description: takes files
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 router.put('/csv', function(req, res) {
   console.log('coming in here')
   let tutorials = [];
@@ -84,8 +102,28 @@ router.get('/delete', (req, res) => {
   .catch(() => res.send("err"))
 })
 /**
- * @requires { email, password, confirmPasswrod } - req.body
- * @description
+ * @swagger
+ * /register:
+ *    post:
+ *      description: Use to register user
+ *    produces:
+ *       - application/json
+ *    parameters:
+ *       - name: email
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: confirmPassword
+ *         in: formData
+ *         required: true
+ *         type: string
+ *    responses:
+ *      '401':
+ *        description: Initial checks fail
  */
 router.post('/register', registerInitialCheck, register);
 

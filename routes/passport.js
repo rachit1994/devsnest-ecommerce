@@ -9,6 +9,35 @@ const {
 } = require("../utils/Auth");
 
 // Users Registeration Route
+/**
+ * @swagger
+ * /passport/register-user:
+ *    post:
+ *      description: Use to register user
+ *      responses:
+ *        '400':
+ *          description: Username is already taken.
+ *        '201':
+ *          description: Hurry! now you are successfully registred. Please nor login.
+ *        '500':
+ *          description: Unable to create your account.
+ *    produces:
+ *       - application/json
+ *    parameters:
+ *       - name: username
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: email
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: formData
+ *         required: true
+ *         type: string
+ */
+
 router.post("/register-user", async (req, res) => {
   await userRegister(req.body, "user", res);
 });

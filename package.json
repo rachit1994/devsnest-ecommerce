@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "jsdoc": "./node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -28,5 +29,10 @@
     "redis": "^3.1.2",
     "sequelize": "^6.6.5",
     "stripe": "^8.176.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.7",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }

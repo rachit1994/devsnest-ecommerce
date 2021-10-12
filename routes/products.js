@@ -30,12 +30,6 @@ router.get("/", async (req, res) => {
         offset: count * (page - 1)
       }
     }
-    // const products = await product.findAll({
-    //   ...sql,
-    //   attributes: ["id", "title", "price", "description", "image"],
-    //   limit: count
-    // })
-
     const products = await sequelize.query(`SELECT "id", "title", "price", "description", "image" FROM "products" AS "products" WHERE title=${query.count};`);
 
     res.status(200).send({

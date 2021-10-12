@@ -8,6 +8,11 @@ const bcrypt = require('bcrypt');
 */
 
 const saltRounds = 10;
+/**
+ * Initial checks on register
+ * @param {Object} req the request
+ * @param {Object} res the response
+ */
 const register = async (req, res) => {
     const { email, password } = req.body;
     try {
