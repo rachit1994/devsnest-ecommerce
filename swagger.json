@@ -1,0 +1,14 @@
+{
+    "swaggerDefinition": {
+        "info": {
+            "version": "1.0.0",
+            "title": "Devsnest API",
+            "description": "Devsnest API Information",
+            "contact": {
+                "name": "Amazing Developer"
+            },
+            "servers": ["http://localhost:5000"]
+        }
+    },
+    "apis": ["./routes/*.js"]
+}
